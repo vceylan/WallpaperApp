@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WallpaperUnited</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string-array name="category_array">
+        <item>3D graphics</item>
+        <item>Abstraction</item>
+        <item>Aircraft</item>
+        <item>Auto</item>
+        <item>Anime</item>
+        <item>Helicopters</item>
+        <item>Glamour</item>
+        <item>Cities</item>
+        <item>Girls</item>
+        <item>Children</item>
+        <item>Food</item>
+        <item>Games</item>
+    </string-array>
+
+    <string name="title_activity_image">ImageActivity</string>
+
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="110dp"
+    android:layout_height="150dp"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/ivCellImage"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tvCategoryName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:gravity="center"
+        android:text="Categoty Name Goes Here"
+        android:textColor="@color/White"
+        android:textSize="15sp" />
+
+</LinearLayout>
