@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract.CommonDataKinds;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +14,7 @@ import android.widget.GridView;
 
 import com.tumag.mobile.wallpaperunited.R;
 import com.tumag.mobile.wallpaperunited.adapters.GalleryAdapter;
+import com.tumag.mobile.wallpaperunited.customs.CommonVariables;
 import com.tumag.mobile.wallpaperunited.models.GalleyModel;
 import com.tumag.mobile.wallpaperunited.views.image.ImageActivity;
 
@@ -37,7 +39,7 @@ public class PhotoGalleryActivity extends Activity implements  OnItemClickListen
 		String[] categories = getResources().getStringArray(R.array.category_array);
 		
 		for (int i = 0; i < categories.length; i++) {
-			String imageName = "cat" + (i+1);
+			String imageName = "cat" +i;
 			int imageId = getResources().getIdentifier(imageName, "drawable", getPackageName());
 			if (imageId != 0) {
 				GalleyModel model = new GalleyModel();
@@ -60,7 +62,8 @@ public class PhotoGalleryActivity extends Activity implements  OnItemClickListen
 	@Override
 	public void onItemClick(AdapterView<?> adapter, View view, int position, long arg3) {
 		Intent intent = new Intent(this, ImageActivity.class);
-		intent.putExtra("categoryIndex", position);
+		CommonVariables.categoryIndex = position;
+		CommonVariables.imageIndex = 0;
 		startActivity(intent);
 	}
 }

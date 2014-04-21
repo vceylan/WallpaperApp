@@ -6,35 +6,31 @@
 
     <ImageView
         android:id="@+id/ivSinglePhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="89dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        android:src="@drawable/pic_1_1" />
+        android:src="@drawable/ic_launcher" />
 
     <ImageButton
-        android:onClick="onButtonClick"
-        android:id="@+id/bSetWallpaper"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/imageView1"
-        android:layout_marginRight="66dp"
-        android:layout_marginTop="42dp"
-        android:layout_toLeftOf="@+id/bSaveImage"
-        android:src="@drawable/wallpaper" />
-
-    <ImageButton
-        android:onClick="onButtonClick"
         android:id="@+id/bSaveImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/bSetWallpaper"
-        android:layout_marginRight="84dp"
-        android:src="@drawable/save" />
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/save"
+        android:onClick="onButtonClick" />
+
+    <ImageButton
+        android:id="@+id/bSetWallpaper"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/bSaveImage"
+        android:layout_marginLeft="40dp"
+        android:background="@drawable/wall"
+        android:onClick="onButtonClick" />
 
 </RelativeLayout>

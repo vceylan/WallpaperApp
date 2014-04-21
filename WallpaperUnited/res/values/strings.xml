@@ -20,6 +20,12 @@
         <item>Games</item>
     </string-array>
 
+    <string-array name="image_counts">
+    	<item>2</item>    
+    	<item>1</item> 
+    	<item>1</item> 
+    </string-array>
+
     <string name="title_activity_image">ImageActivity</string>
 
 </resources>
