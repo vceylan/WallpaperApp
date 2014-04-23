@@ -1,36 +1,52 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ImageActivity" >
 
-    <ImageView
-        android:id="@+id/ivSinglePhoto"
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3452376150777050/7687587928" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_launcher" />
+        tools:context=".ImageActivity" >
 
-    <ImageButton
-        android:id="@+id/bSaveImage"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/save"
-        android:onClick="onButtonClick" />
+        <ImageView
+            android:id="@+id/ivSinglePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher" />
 
-    <ImageButton
-        android:id="@+id/bSetWallpaper"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/bSaveImage"
-        android:layout_marginLeft="40dp"
-        android:background="@drawable/wall"
-        android:onClick="onButtonClick" />
+        <ImageButton
+            android:id="@+id/bSaveImage"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/save"
+            android:onClick="onButtonClick" />
 
-</RelativeLayout>
+        <ImageButton
+            android:id="@+id/bSetWallpaper"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/bSaveImage"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/wall"
+            android:onClick="onButtonClick" />
+    </RelativeLayout>
+
+</LinearLayout>

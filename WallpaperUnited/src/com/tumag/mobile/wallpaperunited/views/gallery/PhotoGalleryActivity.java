@@ -18,6 +18,10 @@ import com.tumag.mobile.wallpaperunited.customs.CommonVariables;
 import com.tumag.mobile.wallpaperunited.models.GalleyModel;
 import com.tumag.mobile.wallpaperunited.views.image.ImageActivity;
 
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+
 public class PhotoGalleryActivity extends Activity implements  OnItemClickListener{
 
 	@Override
@@ -25,6 +29,17 @@ public class PhotoGalleryActivity extends Activity implements  OnItemClickListen
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_photo_gallery);
 		initializeView();
+		
+		AdView adView = (AdView) findViewById(R.id.adView);
+
+		/*AdRequest adRequest = new AdRequest.Builder()
+				.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+				.addTestDevice("A5BF03C49B1339BB45B094261EB3E204").build();
+				*/
+		AdRequest adRequest = new AdRequest.Builder().build();
+
+		// Start loading the ad in the background.
+		adView.loadAd(adRequest);
 	}
 
 	private void initializeView() {
@@ -32,6 +47,7 @@ public class PhotoGalleryActivity extends Activity implements  OnItemClickListen
 		GalleryAdapter adapter = new GalleryAdapter(getList(), this);
 		gallery.setAdapter(adapter);
 		gallery.setOnItemClickListener(this);
+		
 	}
 
 	private ArrayList<GalleyModel> getList() {

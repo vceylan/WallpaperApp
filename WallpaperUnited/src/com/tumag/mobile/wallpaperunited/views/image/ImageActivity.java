@@ -19,6 +19,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+
 import com.tumag.mobile.wallpaperunited.R;
 import com.tumag.mobile.wallpaperunited.customs.CommonVariables;
 
@@ -54,6 +58,17 @@ public class ImageActivity extends Activity {
 		};
 
 		image.setOnTouchListener(gestureListener);
+		
+		AdView adView = (AdView) findViewById(R.id.adView);
+
+		/*AdRequest adRequest = new AdRequest.Builder()
+				.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+				.addTestDevice("A5BF03C49B1339BB45B094261EB3E204").build();
+				*/
+		AdRequest adRequest = new AdRequest.Builder().build();
+
+		// Start loading the ad in the background.
+		adView.loadAd(adRequest);
 	}
 
 	@Override
