@@ -6,24 +6,26 @@
     <string name="hello_world">Hello world!</string>
 
     <string-array name="category_array">
-        <item>3D graphics</item>
-        <item>Abstraction</item>
-        <item>Aircraft</item>
-        <item>Auto</item>
         <item>Anime</item>
-        <item>Helicopters</item>
-        <item>Glamour</item>
-        <item>Cities</item>
-        <item>Girls</item>
-        <item>Children</item>
-        <item>Food</item>
+        <item>Motorbikes</item>
+        <item>Aircraft</item>
+        <item>Cars</item>
+        <item>Computers</item>
         <item>Games</item>
+        <item>Flowers</item>
+        <item>Music</item>
+        <item>Textures</item>
     </string-array>
-
     <string-array name="image_counts">
-    	<item>2</item>    
-    	<item>1</item> 
-    	<item>1</item> 
+        <item>21</item>
+        <item>21</item>
+        <item>21</item>
+        <item>20</item>
+        <item>21</item>
+        <item>16</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
     </string-array>
 
     <string name="title_activity_image">ImageActivity</string>

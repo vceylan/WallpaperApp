@@ -39,6 +39,27 @@ public class ImageActivity extends Activity {
 		initializeView();
 	}
 
+	protected void onPause() {
+		super.onPause();
+		System.gc();
+		
+	}
+
+	protected void onDestroy() {
+		super.onDestroy();
+		System.gc();
+	}
+
+	protected void onStop() {
+		super.onStop();
+		System.gc();
+	}
+	
+	public void onLowMemory() {
+		super.onLowMemory();
+		System.gc();
+	}
+
 	private void initializeView() {
 		image = (ImageView) findViewById(R.id.ivSinglePhoto);
 
@@ -58,13 +79,14 @@ public class ImageActivity extends Activity {
 		};
 
 		image.setOnTouchListener(gestureListener);
-		
+
 		AdView adView = (AdView) findViewById(R.id.adView);
 
-		/*AdRequest adRequest = new AdRequest.Builder()
-				.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-				.addTestDevice("A5BF03C49B1339BB45B094261EB3E204").build();
-				*/
+		/*
+		 * AdRequest adRequest = new AdRequest.Builder()
+		 * .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+		 * .addTestDevice("A5BF03C49B1339BB45B094261EB3E204").build();
+		 */
 		AdRequest adRequest = new AdRequest.Builder().build();
 
 		// Start loading the ad in the background.
@@ -73,7 +95,6 @@ public class ImageActivity extends Activity {
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		
 
 		return super.onTouchEvent(event);
 	}
@@ -171,7 +192,7 @@ public class ImageActivity extends Activity {
 
 		@Override
 		public boolean onDown(MotionEvent e) {
-		
+
 			return true;
 		}
 	}
