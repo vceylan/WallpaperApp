@@ -80,7 +80,7 @@ public class ImageActivity extends Activity {
 
 		image.setOnTouchListener(gestureListener);
 
-		AdView adView = (AdView) findViewById(R.id.adView);
+		AdView adView = (AdView) findViewById(R.id.adView2);
 
 		/*
 		 * AdRequest adRequest = new AdRequest.Builder()
