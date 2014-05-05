@@ -15,6 +15,31 @@
         <item>Flowers</item>
         <item>Music</item>
         <item>Textures</item>
+        <item>Abstract</item>
+        <item>Basketball</item>
+        <item>Girls</item>
+        <item>Fantasy</item>
+        <item>Football</item>
+        <item>Beach</item>
+        <item>Men</item>
+        <item>Drinks</item>
+        <item>Children</item>
+        <item>Creative</item>
+        <item>Helicopters</item>
+        <item>Weapons</item>
+        <item>Cats</item>
+        <item>Dogs</item>
+        <item>Nature</item>
+        <item>Holidays</item>
+        <item>Space</item>
+        <item>Love</item>
+        <item>Funny</item>
+        <item>Cartoons</item>
+        <item>Movies</item>
+        <item>Moods</item>
+        <item>Sunset</item>
+        <item>Macro</item>
+        <item>Ship</item>
     </string-array>
     <string-array name="image_counts">
         <item>21</item>
@@ -26,6 +51,31 @@
         <item>20</item>
         <item>20</item>
         <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>28</item>
+        <item>20</item>
+        <item>21</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>21</item>
+        <item>19</item>
+        <item>20</item>
+        <item>18</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>20</item>
+        <item>19</item>
+        <item>16</item>
+        <item>20</item>
+        <item>8</item>
+        <item>19</item>
+        <item>21</item>
+        <item>19</item>
     </string-array>
 
     <string name="title_activity_image">ImageActivity</string>

@@ -31,7 +31,7 @@ import com.tumag.mobile.wallpaperunited.R;
 import com.tumag.mobile.wallpaperunited.customs.CommonVariables;
 
 public class ImageActivity extends Activity implements ViewFactory {
-	
+
 	ImageSwitcher imageSwitcher;
 	boolean isShowing = true;
 	int downX, upX;
@@ -45,15 +45,14 @@ public class ImageActivity extends Activity implements ViewFactory {
 	}
 
 	private void initializeView() {
-		
+
 		imageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
 		imageSwitcher.setFactory(this);
 		imageSwitcher.setInAnimation(AnimationUtils.loadAnimation(this,
 				android.R.anim.fade_in));
 		imageSwitcher.setOutAnimation(AnimationUtils.loadAnimation(this,
 				android.R.anim.fade_out));
-		
-		
+
 		imageSwitcher.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 
@@ -66,12 +65,12 @@ public class ImageActivity extends Activity implements ViewFactory {
 				else if (event.getAction() == MotionEvent.ACTION_UP) {
 					upX = (int) event.getX();
 					Log.i("event.getX()", " upX " + downX);
-					if (upX - downX > 100) {
+					if (upX - downX > 50) {
 
 						// curIndex current image index in array viewed by user
 						CommonVariables.imageIndex--;
 						if (CommonVariables.imageIndex < 0) {
-							CommonVariables.imageIndex = CommonVariables.maxIndex-1;
+							CommonVariables.imageIndex = CommonVariables.maxIndex - 1;
 						}
 
 						imageSwitcher.setInAnimation(AnimationUtils
@@ -81,11 +80,13 @@ public class ImageActivity extends Activity implements ViewFactory {
 								.loadAnimation(ImageActivity.this,
 										android.R.anim.fade_out));
 
-						imageSwitcher.setImageResource(getImageId(CommonVariables.categoryIndex, CommonVariables.imageIndex));
+						imageSwitcher.setImageResource(getImageId(
+								CommonVariables.categoryIndex,
+								CommonVariables.imageIndex));
 						// GalleryActivity.this.setTitle(curIndex);
 					}
 
-					else if (downX - upX > -100) {
+					else if (downX - upX > -50) {
 
 						CommonVariables.imageIndex++;
 						if (CommonVariables.imageIndex > CommonVariables.maxIndex) {
@@ -99,7 +100,9 @@ public class ImageActivity extends Activity implements ViewFactory {
 								.loadAnimation(ImageActivity.this,
 										android.R.anim.fade_out));
 
-						imageSwitcher.setImageResource(getImageId(CommonVariables.categoryIndex, CommonVariables.imageIndex));
+						imageSwitcher.setImageResource(getImageId(
+								CommonVariables.categoryIndex,
+								CommonVariables.imageIndex));
 						// GalleryActivity.this.setTitle(curIndex);
 					}
 					return true;
@@ -108,10 +111,8 @@ public class ImageActivity extends Activity implements ViewFactory {
 			}
 		});
 
-
-
-		imageSwitcher.setImageResource(getImageId(CommonVariables.categoryIndex, CommonVariables.imageIndex));
-		
+		imageSwitcher.setImageResource(getImageId(
+				CommonVariables.categoryIndex, CommonVariables.imageIndex));
 
 		AdView adView = (AdView) findViewById(R.id.adView2);
 
@@ -125,15 +126,13 @@ public class ImageActivity extends Activity implements ViewFactory {
 		// Start loading the ad in the background.
 		adView.loadAd(adRequest);
 	}
-	
-	private int getImageId(int categoryIndex, int imageIndex)
-	{
+
+	private int getImageId(int categoryIndex, int imageIndex) {
 		return getResources().getIdentifier(
 				"pic_" + CommonVariables.categoryIndex + "_"
 						+ CommonVariables.imageIndex, "drawable",
 				getPackageName());
 	}
-
 
 	public void onButtonClick(View v) {
 		switch (v.getId()) {
@@ -176,7 +175,6 @@ public class ImageActivity extends Activity implements ViewFactory {
 		return true;
 	}
 
-
 	private class TaskSetWallpaper extends AsyncTask<Void, Void, Void> {
 
 		@Override
@@ -210,7 +208,6 @@ public class ImageActivity extends Activity implements ViewFactory {
 		}
 
 	}
-
 
 	@Override
 	public View makeView() {
