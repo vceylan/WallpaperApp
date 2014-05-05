@@ -19,14 +19,6 @@
         android:layout_height="match_parent"
         tools:context=".ImageActivity" >
 
-        <ImageView
-            android:id="@+id/ivSinglePhoto"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_launcher" />
-
         <ImageButton
             android:id="@+id/bSaveImage"
             android:layout_width="75dp"
@@ -47,6 +39,14 @@
             android:layout_marginLeft="40dp"
             android:background="@drawable/wall"
             android:onClick="onButtonClick" />
+
+        <ImageSwitcher
+            android:id="@+id/imageSwitcher"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="147dp" >
+        </ImageSwitcher>
     </RelativeLayout>
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.tumag.mobile.wallpaperunited.views.image;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.WallpaperManager;
@@ -15,70 +16,102 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.ViewSwitcher.ViewFactory;
 
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
-
 import com.tumag.mobile.wallpaperunited.R;
 import com.tumag.mobile.wallpaperunited.customs.CommonVariables;
 
-public class ImageActivity extends Activity {
-	private GestureDetector gestureDetector;
-	View.OnTouchListener gestureListener;
-	ImageView image;
+public class ImageActivity extends Activity implements ViewFactory {
+	
+	ImageSwitcher imageSwitcher;
 	boolean isShowing = true;
+	int downX, upX;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_image);
+
 		initializeView();
 	}
 
-	protected void onPause() {
-		super.onPause();
-		System.gc();
-		
-	}
-
-	protected void onDestroy() {
-		super.onDestroy();
-		System.gc();
-	}
-
-	protected void onStop() {
-		super.onStop();
-		System.gc();
-	}
-	
-	public void onLowMemory() {
-		super.onLowMemory();
-		System.gc();
-	}
-
 	private void initializeView() {
-		image = (ImageView) findViewById(R.id.ivSinglePhoto);
-
-		int imageId = getResources().getIdentifier(
-				"pic_" + CommonVariables.categoryIndex + "_"
-						+ CommonVariables.imageIndex, "drawable",
-				getPackageName());
-
-		image.setImageResource(imageId);
-
-		// Gesture detection
-		gestureDetector = new GestureDetector(this, new InnerGestureDetector());
-		gestureListener = new View.OnTouchListener() {
+		
+		imageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
+		imageSwitcher.setFactory(this);
+		imageSwitcher.setInAnimation(AnimationUtils.loadAnimation(this,
+				android.R.anim.fade_in));
+		imageSwitcher.setOutAnimation(AnimationUtils.loadAnimation(this,
+				android.R.anim.fade_out));
+		
+		
+		imageSwitcher.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
-				return gestureDetector.onTouchEvent(event);
-			}
-		};
 
-		image.setOnTouchListener(gestureListener);
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					downX = (int) event.getX();
+					Log.i("event.getX()", " downX " + downX);
+					return true;
+				}
+
+				else if (event.getAction() == MotionEvent.ACTION_UP) {
+					upX = (int) event.getX();
+					Log.i("event.getX()", " upX " + downX);
+					if (upX - downX > 100) {
+
+						// curIndex current image index in array viewed by user
+						CommonVariables.imageIndex--;
+						if (CommonVariables.imageIndex < 0) {
+							CommonVariables.imageIndex = CommonVariables.maxIndex-1;
+						}
+
+						imageSwitcher.setInAnimation(AnimationUtils
+								.loadAnimation(ImageActivity.this,
+										android.R.anim.fade_in));
+						imageSwitcher.setOutAnimation(AnimationUtils
+								.loadAnimation(ImageActivity.this,
+										android.R.anim.fade_out));
+
+						imageSwitcher.setImageResource(getImageId(CommonVariables.categoryIndex, CommonVariables.imageIndex));
+						// GalleryActivity.this.setTitle(curIndex);
+					}
+
+					else if (downX - upX > -100) {
+
+						CommonVariables.imageIndex++;
+						if (CommonVariables.imageIndex > CommonVariables.maxIndex) {
+							CommonVariables.imageIndex = 0;
+						}
+
+						imageSwitcher.setInAnimation(AnimationUtils
+								.loadAnimation(ImageActivity.this,
+										android.R.anim.fade_in));
+						imageSwitcher.setOutAnimation(AnimationUtils
+								.loadAnimation(ImageActivity.this,
+										android.R.anim.fade_out));
+
+						imageSwitcher.setImageResource(getImageId(CommonVariables.categoryIndex, CommonVariables.imageIndex));
+						// GalleryActivity.this.setTitle(curIndex);
+					}
+					return true;
+				}
+				return false;
+			}
+		});
+
+
+
+		imageSwitcher.setImageResource(getImageId(CommonVariables.categoryIndex, CommonVariables.imageIndex));
+		
 
 		AdView adView = (AdView) findViewById(R.id.adView2);
 
@@ -92,12 +125,15 @@ public class ImageActivity extends Activity {
 		// Start loading the ad in the background.
 		adView.loadAd(adRequest);
 	}
-
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-
-		return super.onTouchEvent(event);
+	
+	private int getImageId(int categoryIndex, int imageIndex)
+	{
+		return getResources().getIdentifier(
+				"pic_" + CommonVariables.categoryIndex + "_"
+						+ CommonVariables.imageIndex, "drawable",
+				getPackageName());
 	}
+
 
 	public void onButtonClick(View v) {
 		switch (v.getId()) {
@@ -115,8 +151,8 @@ public class ImageActivity extends Activity {
 	}
 
 	private void saveImage() {
-		image.setDrawingCacheEnabled(true);
-		Bitmap bitmap = image.getDrawingCache();
+		imageSwitcher.setDrawingCacheEnabled(true);
+		Bitmap bitmap = imageSwitcher.getDrawingCache();
 
 		try {
 			MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,
@@ -140,62 +176,6 @@ public class ImageActivity extends Activity {
 		return true;
 	}
 
-	class InnerGestureDetector extends SimpleOnGestureListener {
-		private static final int SWIPE_MIN_DISTANCE = 120;
-		private static final int SWIPE_MAX_OFF_PATH = 250;
-		private static final int SWIPE_THRESHOLD_VELOCITY = 200;
-
-		@Override
-		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
-				float velocityY) {
-			try {
-				int imageIndex = 0;
-				boolean toLeft = false;
-				Intent intent = new Intent(
-						ImageActivity.this.getApplicationContext(),
-						ImageActivity.class);
-				if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH)
-					return false;
-				// right to left swipe
-				if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
-						&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-					imageIndex = CommonVariables.imageIndex + 1;
-					toLeft = true;
-
-				} else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE
-						&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-					imageIndex = CommonVariables.imageIndex - 1;
-				}
-
-				int imageId = getResources().getIdentifier(
-						"pic_" + CommonVariables.categoryIndex + "_"
-								+ imageIndex, "drawable", getPackageName());
-				if (imageId != 0) {
-					CommonVariables.imageIndex = imageIndex;
-					ImageActivity.this.startActivity(intent);
-					if (toLeft) {
-						ImageActivity.this.overridePendingTransition(
-								R.anim.right_to_left, R.anim.left_to_right);
-					} else {
-						ImageActivity.this.overridePendingTransition(
-								R.anim.right_to_left_reversed,
-								R.anim.left_to_right_reversed);
-					}
-					ImageActivity.this.finish();
-				}
-
-			} catch (Exception e) {
-				Log.e("Error", e.getMessage());
-			}
-			return false;
-		}
-
-		@Override
-		public boolean onDown(MotionEvent e) {
-
-			return true;
-		}
-	}
 
 	private class TaskSetWallpaper extends AsyncTask<Void, Void, Void> {
 
@@ -229,5 +209,13 @@ public class ImageActivity extends Activity {
 					Toast.LENGTH_SHORT).show();
 		}
 
+	}
+
+
+	@Override
+	public View makeView() {
+		ImageView i = new ImageView(this);
+		i.setScaleType(ImageView.ScaleType.FIT_CENTER);
+		return i;
 	}
 }

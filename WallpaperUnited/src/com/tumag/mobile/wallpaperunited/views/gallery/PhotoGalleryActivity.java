@@ -80,6 +80,9 @@ public class PhotoGalleryActivity extends Activity implements  OnItemClickListen
 		Intent intent = new Intent(this, ImageActivity.class);
 		CommonVariables.categoryIndex = position;
 		CommonVariables.imageIndex = 0;
+		
+		//TODO commonvariables.maxindex de setlenmeli
+		
 		startActivity(intent);
 	}
 }

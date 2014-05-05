@@ -403,12 +403,12 @@ int drawable wallpaper 0x7f0200dd
 int id action_settings 0x7f06000d
 int id adView 0x7f060009
 int id adView2 0x7f060005
-int id bSaveImage 0x7f060007
-int id bSetWallpaper 0x7f060008
+int id bSaveImage 0x7f060006
+int id bSetWallpaper 0x7f060007
 int id gvPhotoGallery 0x7f06000a
 int id hybrid 0x7f060004
+int id imageSwitcher 0x7f060008
 int id ivCellImage 0x7f06000b
-int id ivSinglePhoto 0x7f060006
 int id none 0x7f060000
 int id normal 0x7f060001
 int id satellite 0x7f060002

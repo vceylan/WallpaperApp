@@ -570,12 +570,12 @@ containing a value of this type.
         public static final int action_settings=0x7f06000d;
         public static final int adView=0x7f060009;
         public static final int adView2=0x7f060005;
-        public static final int bSaveImage=0x7f060007;
-        public static final int bSetWallpaper=0x7f060008;
+        public static final int bSaveImage=0x7f060006;
+        public static final int bSetWallpaper=0x7f060007;
         public static final int gvPhotoGallery=0x7f06000a;
         public static final int hybrid=0x7f060004;
+        public static final int imageSwitcher=0x7f060008;
         public static final int ivCellImage=0x7f06000b;
-        public static final int ivSinglePhoto=0x7f060006;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
         public static final int satellite=0x7f060002;
