@@ -44,6 +44,7 @@ public class PhotoGalleryActivity extends Activity implements  OnItemClickListen
 
 	private void initializeView() {
 		GridView gallery = (GridView) findViewById(R.id.gvPhotoGallery);
+		gallery.setFastScrollEnabled(true);
 		GalleryAdapter adapter = new GalleryAdapter(getList(), this);
 		gallery.setAdapter(adapter);
 		gallery.setOnItemClickListener(this);
