@@ -27,7 +27,7 @@ import android.widget.ViewSwitcher.ViewFactory;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
-import com.tumag.mobile.wallpaperunited.R;
+import com.fantasticideasgroup.wallpaperunited.R;
 import com.tumag.mobile.wallpaperunited.customs.CommonVariables;
 
 public class ImageActivity extends Activity implements ViewFactory {

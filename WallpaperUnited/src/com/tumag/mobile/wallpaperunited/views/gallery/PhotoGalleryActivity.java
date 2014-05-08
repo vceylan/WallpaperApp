@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
-import com.tumag.mobile.wallpaperunited.R;
+import com.fantasticideasgroup.wallpaperunited.R;
 import com.tumag.mobile.wallpaperunited.adapters.GalleryAdapter;
 import com.tumag.mobile.wallpaperunited.customs.CommonVariables;
 import com.tumag.mobile.wallpaperunited.models.GalleyModel;

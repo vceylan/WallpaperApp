@@ -2,7 +2,7 @@ package com.tumag.mobile.wallpaperunited.adapters;
 
 import java.util.ArrayList;
 
-import com.tumag.mobile.wallpaperunited.R;
+import com.fantasticideasgroup.wallpaperunited.R;
 import com.tumag.mobile.wallpaperunited.models.GalleyModel;
 
 import android.app.Activity;
