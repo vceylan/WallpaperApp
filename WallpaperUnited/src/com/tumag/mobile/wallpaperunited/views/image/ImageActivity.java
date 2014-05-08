@@ -43,6 +43,32 @@ public class ImageActivity extends Activity implements ViewFactory {
 
 		initializeView();
 	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		imageSwitcher.destroyDrawingCache();
+		super.onBackPressed();
+		
+	}
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		imageSwitcher.destroyDrawingCache();
+		super.onPause();
+	}
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		imageSwitcher.destroyDrawingCache();
+		super.onStop();
+	}
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		imageSwitcher.destroyDrawingCache();
+		super.onDestroy();
+	}
 
 	private void initializeView() {
 
